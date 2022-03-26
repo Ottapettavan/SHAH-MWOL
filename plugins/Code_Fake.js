@@ -1,5 +1,5 @@
 //codded by afnanplk
-// chunkindepadayali 
+// Ottapettavan 
 
 const MyPnky = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
