@@ -1,4 +1,4 @@
-// re modified @ chunkindepadayali  (lizaMwol™)
+// re modified @ Ottapettavan  (shahMwol™)
 
 const {MessageType, GroupSettingChange} = require('@adiwajshing/baileys'); 
 const Asena = require('../events');
