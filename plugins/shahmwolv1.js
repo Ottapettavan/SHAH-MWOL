@@ -1,36 +1,66 @@
-/* Amalser Bot
-Re-edit Amalser + ottapettavan 
-*/
+
 
 const ShahMwol = require('../events');
-const {MessageType, GroupSettingChange, Mimetype, MessageOptions} = require('@adiwajshing/baileys');
-const fs = require('fs');
-const Config = require('../config')
-const config = require('../config')
-const axios = require('axios')
-const request = require('request');
-const os = require('os');
-var clh = { cd: 'L3Jvb3QvV2hhdHNBc2VuYUR1cGxpY2F0ZWQv', pay: '' }    
-var ggg = Buffer.from(clh.cd, 'base64')
-var ddd = ggg.toString('utf-8')
+const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
+const {spawnSync} = require('child_process');
+const Config = require('../config');
+const chalk = require('chalk');
+const axios = require('axios');
+let wk = Config.WORKTYPE == 'public' ? false : true
+
+const Language = require('../language');
+const Lang = Language.getString('system_stats');
 
 
-let whb = Config.WORKTYPE == 'public' ? false : true
 
-ShahMwol.addCommand({pattern: 'alive', fromMe: whb, dontAddCommandList: true}, (async (message, match) => {
-// send a buttons message!credit Amal
-    const buttons = [
-        {buttonId: 'id1', buttonText: {displayText: Config.ALIVE_BUTTON }, type: 1},
-        {buttonId: 'id2', buttonText: {displayText: Config.ALIVEBUTTON }, type: 1}
-      ]
-      
-      const buttonMessage = {
-          contentText: '```'+Config.BOTV2+'\n\n```'+Config.ALIVEMSG+'\n',
-          footerText: 'ѕнaн ᴍᴡᴏʟ™ ',
-          buttons: buttons,
-          headerType: 1
-      }
-      
-await message.client.sendMessage(message.jid, buttonMessage, MessageType.buttonsMessage, { mimetype: Mimetype.buttonsMessage, quoted: message.data, ptt: true,quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { orderMessage: { itemCount: 123, status: 200, thumbnail: fs.readFileSync('SHAMOWL.jpg'), surface: 200, message: Config.BOTV2, orderTitle: Config.BOTV2, "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": Config.BOTV2 + '\n', "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1080, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('SHAMOWL.jpg')}}}});
 
-}));
+    ShahMwol.addCommand({pattern: 'alive', fromMe: wk, desc: Lang.ALIVE_DESC, deleteCommand: false }, (async (message, match) => {
+       if (Config.ALIVE_STIC == 'default') {
+       const sticker = await axios.get('https://i.ibb.co/XkWhjLh/Nt-OOzj-C3-HBAB.webp', {responseType: 'arraybuffer'})
+       await message.client.sendMessage (message.jid, Buffer.from (sticker.data), MessageType.sticker, {quoted: message.data} )
+       }else { if (!Config.ALIVE_STIC.includes('webp')){
+        const sticker = await axios.get('https://i.ibb.co/XkWhjLh/Nt-OOzj-C3-HBAB.webp', {responseType: 'arraybuffer'})
+       await message.client.sendMessage (message.jid, Buffer.from (sticker.data), MessageType.sticker, {quoted: message.data} )
+    }else{
+             const sticker = await axios.get(Config.ALIVE_STIC, {responseType: 'arraybuffer'})
+            await message.client.sendMessage (message.jid, Buffer.from (sticker.data), MessageType.sticker, {quoted: message.data} )                                        
+                                                                                                   }}
+                                                                                                   
+                                                                                                   
+        
+        var HANDLER = '';
+    
+                    if (/\[(\W*)\]/.test(Config.HANDLERS)) {
+                        HANDLER = Config.HANDLERS.match(/\[(\W*)\]/)[1][0];
+                    } else {
+                        HANDLER = '.';
+                    }
+
+        if (Config.ALIVEMSG == 'default') {
+            
+        var aliveimg = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
+
+        await message.client.sendMessage (message.jid, Buffer.from (aliveimg.data), MessageType.image, {mimetype: Mimetype.png, caption: '┌───[🐋ShahMwol 🐋]\n\n│```👋Hey, I\'m online now```\n\n│ ```Type``` ' + HANDLER + Config. CUS_PANEL + ' ```to get command list```\n\n│ _Version_: ```'  + Config. VERSION + '```\n\n└─────────────◉',quoted: message.data })
+
+    }
+    else {
+            
+            var image = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
+       
+        await message.client.sendMessage (message.jid, Buffer.from (image.data), MessageType.image, {mimetype: Mimetype.png, caption: Config.ALIVEMSG + '\n\n𝙿𝙾𝚆𝙴𝚁𝙴 by Shahmwol  ²⁰²²',quoted: message.data })
+     }
+    }));
+
+    ShahMwol.addCommand({pattern: 'sysd', fromMe: true, desc: Lang.SYSD_DESC, deleteCommand: false }, (async (message, match) => {
+
+        if (message.jid === '120363042897065108@g.us') {
+
+            return;
+        }
+
+        const child = spawnSync('neofetch', ['--stdout']).stdout.toString('utf-8')
+        await message.sendMessage(
+            '```' + child + '```', MessageType.text
+        );
+    }));
+
