@@ -75,7 +75,7 @@ jobs:
         run: (Get-Content -path package.json -Raw) -replace "version patch","version ${{ steps.versionBump.outputs.new_tag }}-${{ steps.vars.outputs.branchName }} --no-git-tag-version -f" | Set-Content -Path package.json
 
       # run npm commands
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         if: ${{ (!!env.InstallCommand || !!env.BuildCommand) && steps.package_json_exists.outputs.files_exists == 'true' }}
         with:
           node-version: 14
