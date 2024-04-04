@@ -1,0 +1,35 @@
+            - name: Github Maintenance Action
+  # You may pin to the exact commit or the version.
+  # uses: viascom/github-maintenance-action@97b2f0b509d53101e437287d17e09900978c3e24
+  uses: viascom/github-maintenance-action@v0.0.1
+  with:
+    # Authentication token
+    github_token: " ${{ github.token }}"
+    # Base API URL
+    github_base_url: "https://api.github.com"
+    # Name of the repository.
+    repository: "${{ github.SHAH-MWOL }}"
+    # Retention time in days of runs to keep.
+    retention_days: 31
+    # Minimum workflow runs to keep.
+    keep_minimum_runs: 5
+    # Deletes only the logs of the workflow runs.
+    delete_logs:  "optional"
+    # Deletes only the artifacts of the workflow runs.
+    delete_artifacts:  "optional"
+    # Comma-separated list of actors of the workflow runs to be deleted.
+    actors: "optional, default is "
+    # Comma-separated list of branches of the workflow runs to be deleted.
+    branches: "optional, default is "
+    # Comma-separated list of events of the workflow runs to be deleted.
+    events: "optional, default is" 
+    # Comma-separated list of statuses of the workflow runs to be deleted.
+    statuses: "optional, default is "
+    # If set to true, it will keep pull request workflow runs.
+    keep_pull_requests: "optional"
+    # Logs simulated changes, no actions are performed!
+    dry_run: " optional "
+    # When debug is enabled more logs will be printed.
+    debug: "optional"
+
+        '  +'
