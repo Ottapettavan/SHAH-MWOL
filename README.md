@@ -26,7 +26,7 @@
   
 1. If you dont have a github account create a account. Click [GIT HUB SIGN UP](https://github.com/signup/)
 
-2. Open the WhatsApp account where you want to create the bot and go into the link device and SCAN the QR code Click [SCAN](https://replit.com/@Ottapettavan/Shahmwol?v=1)
+2. Open the WhatsApp account where you want to create the bot and go into the link device and SCAN the QR code Click [SCAN](https://sectionv1-rc1o-7mfgzsg6t-ottapettavans-projects.vercel.app))
  
 3. If You don't have a account in [Heroku](https://signup.heroku.com/), Create a account.
 
