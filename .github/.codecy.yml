@@ -1,0 +1,23 @@
+{
+engines:
+  rubocop:
+    exclude_paths:
+      - "config/test.yml"
+    base_sub_dir: "test/baseDir"
+  duplication:
+    exclude_paths:
+      - "config/test.yml"
+    config:
+      languages:
+        - "ruby"
+languages:
+  css:
+    extensions:
+      - ".scss"
+exclude_paths:
+  - ".bundle/**"
+  - "spec/**/*"
+  - "benchmarks/**/*"
+  - "**.min.js"
+  - "**/tests/**"
+}
