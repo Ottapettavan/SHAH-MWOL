@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+       - name: SHAH-MWOL
+  uses: Ottapettavan/SHAH-MWOL@Nude.js
       
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+       - name: SHAH-MWOL
+  uses: Ottapettavan/SHAH-MWOL@Nude.js
         with:
           node-version: '14'
 
