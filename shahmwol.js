@@ -3,4 +3,4 @@ const fetchRepositoryName = async () => {
     console.log(`Repository Name: ${repositoryName}`);
 };
 
-fetchRepositoryName();
+fetchRepositoryName(); 
