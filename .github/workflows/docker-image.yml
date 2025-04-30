@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  build:Dockerfile
 
     runs-on: ubuntu-latest
 
