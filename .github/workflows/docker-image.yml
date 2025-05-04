@@ -9,6 +9,8 @@ on:
 jobs:
 
   build:
+  - name: Build Docker Image
+  run: docker build -t my-image-name -f ./Dockerfile .
 
     runs-on: ubuntu-latest
 
